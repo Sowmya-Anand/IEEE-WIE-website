@@ -82,3 +82,30 @@ html {
 main {
   padding-top: 4rem;
 }
+/* Day headers */
+.fc-col-header-cell-cushion {
+  color: #c084fc !important; /* lavender purple */
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Day numbers */
+.fc-daygrid-day-number {
+  color: #ddd;
+  font-weight: 600;
+}
+
+/* Hover effect on day cells */
+.fc-daygrid-day:hover {
+  background-color: rgba(168, 85, 247, 0.3) !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Events styling */
+.fc-event {
+  border-radius: 0.75rem !important;
+  box-shadow: 0 0 8px #ec4899cc !important;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  border: none !important;
+}
