@@ -1,125 +1,150 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image"; 
+import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Team", href: "/team" },
-    { name: "Events", href: "/events" },
-    { name: "Contact", href: "/contact" },
+    { name: "About", href: "/#about" },
+    { name: "Team", href: "/" },
+    { name: "Events", href: "/" },
+    { name: "Contact", href: "/" },
   ];
 
   return (
-    <nav className="bg-background/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-r bg-primary-purple/80 backdrop-blur-md border-b border-purple-400/50 shadow-md`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Logo Section */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-x-4">
-              <Image
-                src="/images/ieeewie_logo.png" // Path from the `public` folder
-                alt="IEEE WIE Logo"
-                width={120} 
-                height={40}
-                className="h-10 w-auto" 
-              />
-              <Image
-                src="/images/ssn_logo.png"
-                alt="SSN College Logo"
-                width={40} 
-                height={40} 
-                className="h-10 w-auto" 
-              />
+            <Link href="/" className="flex items-center gap-x-4 group">
+              <div className="transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/images/ieeewie_logo.png"
+                  alt="IEEE WIE Logo"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto drop-shadow-sm"
+                />
+              </div>
+              <div className="transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/images/ssn_logo.png"
+                  alt="SSN College Logo"
+                  width={40}
+                  height={40}
+                  className="h-10 w-auto drop-shadow-sm"
+                />
+              </div>
             </Link>
           </div>
 
-
-          {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-foreground hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="relative px-4 py-2 text-white-700 font-medium text-xl transition-all duration-300 rounded-lg hover:text-white-600 group font-garamond"
+              >
+                <span className="relative z-10">{link.name}</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full group-hover:left-0 transition-all duration-300"></div>
+              </Link>
+            ))}
+            
+            {/* CTA Button */}
+            <button className="ml-4 px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold text-sm rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:from-purple-600 hover:to-pink-700 font-garamond">
+              Join Us
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="-mr-2 flex md:hidden">
+          <div className="md:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              type="button"
-              className="bg-gray-200 dark:bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-foreground hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              onClick={toggleMenu}
+              className="relative w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/10 to-pink-500/10 flex items-center justify-center transition-all duration-300 hover:from-purple-500/20 hover:to-pink-500/20"
               aria-controls="mobile-menu"
-              aria-expanded="false"
+              aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
-              {!isOpen ? (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              )}
+              <div className="relative w-6 h-6">
+                <span
+                  className={`absolute left-0 top-1 w-6 h-0.5 bg-gradient-to-r from-purple-500 to-pink-600 transition-all duration-300 ${
+                    isOpen ? 'rotate-45 top-2.5' : ''
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 top-2.5 w-6 h-0.5 bg-gradient-to-r from-purple-500 to-pink-600 transition-all duration-300 ${
+                    isOpen ? 'opacity-0' : ''
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 top-4 w-6 h-0.5 bg-gradient-to-r from-purple-500 to-pink-600 transition-all duration-300 ${
+                    isOpen ? '-rotate-45 top-2.5' : ''
+                  }`}
+                />
+              </div>
             </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${
+          isOpen 
+            ? 'max-h-96 opacity-100 pb-6' 
+            : 'max-h-0 opacity-0 overflow-hidden'
+        }`} id="mobile-menu">
+          <div className="pt-4 space-y-2">
+            {navLinks.map((link, index) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`block px-4 py-3 text-white-700 font-medium rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-pink-500/10 hover:text-purple-600 transform hover:translate-x-2 font-garamond ${
+                  isOpen ? 'animate-fade-in-up' : ''
+                }`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full"></div>
+                  <span>{link.name}</span>
+                </div>
+              </Link>
+            ))}
+            
+            {/* Mobile CTA Button */}
+            <div className="pt-4">
+              <button className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:from-purple-600 hover:to-pink-700 font-garamond">
+                Join WIE Community
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu, show/hide based on menu state */}
-      <div
-        className={`md:hidden ${isOpen ? "block" : "hidden"}`}
-        id="mobile-menu"
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-foreground hover:bg-gray-200 dark:hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-              onClick={() => setIsOpen(false)} // Close menu on click
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-      </div>
+      {/* Mobile Menu Overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden -z-10"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
     </nav>
   );
 };

@@ -33,7 +33,9 @@ export default function RootLayout({
       {/* Apply the font variables to the body */}
       <body className={`${playfair.variable} ${garamond.variable} antialiased`}>
         <Navbar />
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );
