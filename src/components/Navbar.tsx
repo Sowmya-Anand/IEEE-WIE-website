@@ -20,10 +20,10 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Team", href: "/" },
-    { name: "Events", href: "/" },
-    { name: "Contact", href: "/" },
+    { name: "About", href: "#about" },
+    { name: "Team", href: "/team" },
+    { name: "Events", href: "/events" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
