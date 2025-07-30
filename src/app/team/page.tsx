@@ -55,7 +55,7 @@ export default function TeamPage() {
       ],
     },
     {
-      name: "Public Relations",
+      name: "Public Relations Team",
       images: [
         { src: "/team-images/pr/coverpic.png", alt: "Public Relations Team" },
         { src: "/team-images/pr/Aishwarya.png", alt: "PR Member 1" },
@@ -67,9 +67,9 @@ export default function TeamPage() {
       ],
     },
     {
-      name: "Event Management",
+      name: "Event Management Team",
       images: [
-        { src: "/team-images/event/coverpic.png", alt: "Event Management" },
+        { src: "/team-images/event/coverpic.png", alt: "Event Management Team" },
         { src: "/team-images/event/Madhangi.png", alt: "Event Manager 1" },
         { src: "/team-images/event/Yaazhini.png", alt: "Event Manager 2" },
         { src: "/team-images/event/Ananya.png", alt: "Event Manager 3" },
@@ -79,7 +79,7 @@ export default function TeamPage() {
       ],
     },
     {
-      name: "Editorial",
+      name: "Editorial Team",
       images: [
         { src: "/team-images/editorial/coverpic.png", alt: "Editorial Team" },
         { src: "/team-images/editorial/Faatina.png", alt: "Editorial Member 1" },
@@ -175,20 +175,13 @@ export default function TeamPage() {
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center text-center p-4 md:p-8">
       <div className="w-full max-w-7xl">
-        <Head>
-          <title>Team - IEEE WIE SSN</title>
-          <meta name="description" content="Meet our IEEE WIE SSN team members" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
+    
 
         {/* Main Content */}
         <div className="mx-auto my-8 w-full rounded-[30px] md:rounded-[40px] p-6 md:p-8 text-center relative z-10 
                 bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
           <h1 className="font-['Cormorant_Garamond'] text-4xl md:text-5xl text-[#2b0a3a] mb-8 font-bold">
-            Meet Our Teams
+            Meet Our Team
           </h1>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
