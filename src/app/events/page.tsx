@@ -15,14 +15,14 @@ interface FullCalendarEventInfo {
       description: string;
       gformLink: string;
       imageUrl: string;
-      [key: string]: any;
+      [key: string]: unknown;
     };
     start: Date | string;
     end?: Date | string;
     allDay: boolean;
   };
   timeText?: string;
-  view: any;
+  view: 'month' | string;
 }
 
 const events: EventInput[] = [
@@ -32,7 +32,7 @@ const events: EventInput[] = [
     extendedProps: {
       description: "This is the description for event 1.",
       gformLink: "https://docs.google.com/forms/d/e/1FAIpQLSd4aE5z5QWm7gCRIN3VF9rHFJysn6svB730_iqgTDk55GGXQA/viewform",
-      imageUrl: "/images/event1.webp",
+      imageUrl: "/images/Logo_Dark.jpg",
     },
   },
   {
@@ -59,9 +59,8 @@ export default function EventsPage() {
         <img
           src={extendedProps.imageUrl}
           alt={title}
-          className="absolute w-full h-full object-cover brightness-75 saturate-50"
+          className="relative w-full h-full object-cover brightness-75 saturate-50"
         />
-  
         {/* Title (always visible at bottom) */}
         <div className="absolute bottom-1 left-1 right-1 bg-purple-900/70 text-purple-100 text-xs font-semibold px-2 py-1 rounded-md backdrop-blur-sm z-10 pointer-events-none">
           {title}
@@ -122,42 +121,50 @@ export default function EventsPage() {
 
       {/* Calendar container */}
       <div
-        className="mt-12 w-full max-w-7xl p-8 rounded-3xl
+        className="bg-black mt-12 w-full max-w-7xl p-8 rounded-3xl
           bg-gradient-to-br from-purple-900/80 via-purple-800/75 to-pink-900/80
           backdrop-blur-3xl shadow-2xl border border-purple-700/60"
         style={{ boxShadow: "0 0 40px rgba(168,85,247,0.6)" }}
       >
         <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-          initialView={calendarView}
-          headerToolbar={false}
-          height="auto"
-          dayMaxEvents={true}
-          weekends={true}
-          eventDisplay="block" 
-          eventColor="#ec4899"
-          eventTextColor="#fff"
-          dayHeaderClassNames={() => ["text-purple-300", "font-semibold"]}
-          dayCellClassNames={() => [
-            "rounded-lg",
-            "transition",
-            "duration-300",
-            "hover:bg-purple-700/40",
-            "cursor-pointer",
-            "group",
-            "relative",
-          ]}
-          events={events as EventInput[]}
-          eventContent={renderEventContent} // Use the custom renderEventContent function
-          dateClick={(arg) => {
-            const clickedEvent = events.find(
-              (event) => event.date === arg.dateStr
-            );
-            if (clickedEvent && clickedEvent.extendedProps?.gformLink) {
-              window.open(clickedEvent.extendedProps.gformLink, "_blank");
-            }
-          }}
-        />
+  plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+  initialView={calendarView}
+  headerToolbar={false}
+  height={950}
+  dayMaxEvents={true}
+  weekends={true}
+  eventDisplay="block" 
+  eventColor="#ec4899"
+  eventTextColor="#fff"
+  dayHeaderClassNames={() => ["text-purple-300", "font-semibold"]}
+  dayCellClassNames={() => [
+    "rounded-lg",
+    "transition",
+    "duration-300",
+    "hover:bg-purple-700/40",
+    "cursor-pointer",
+    "group",
+    "relative",
+  ]}
+  dayCellContent={(arg) => (
+    <>
+      <div className="text-center font-semibold text-white">{arg.date.getDate()}</div>
+      {/* Add "Click here" text */}
+      
+    </>
+  )}
+  events={events as EventInput[]}
+  eventContent={renderEventContent} // Use the custom renderEventContent function
+  dateClick={(arg) => {
+    const clickedEvent = events.find(
+      (event) => event.date === arg.dateStr
+    );
+    if (clickedEvent && clickedEvent.extendedProps?.gformLink) {
+      window.open(clickedEvent.extendedProps.gformLink, "_blank");
+    }
+  }}
+/>
+
       </div>
     </div>
   );
