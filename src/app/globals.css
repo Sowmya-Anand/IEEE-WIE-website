@@ -82,3 +82,87 @@ html {
 main {
   padding-top: 4rem;
 }
+/* Day headers */
+.fc-col-header-cell-cushion {
+  color: #c084fc !important; /* lavender purple */
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Day numbers */
+.fc-daygrid-day-number {
+  color: #ddd;
+  font-weight: 600;
+}
+
+/* Hover effect on day cells */
+.fc-daygrid-day:hover {
+  background-color: rgba(168, 85, 247, 0.3) !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Events styling */
+.fc-event {
+  border-radius: 0.75rem !important;
+  box-shadow: 0 0 8px #ec4899cc !important;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  border: none !important;
+  cursor: pointer; /* Add cursor pointer to indicate clickable */
+  /* Ensure the event tile has relative positioning for the absolute overlay */
+  position: relative;
+  padding: 0; /* Remove default padding */
+  overflow: scroll; /* Hide content that overflows the tile */
+}
+
+/* Hide default FullCalendar event text */
+.fc-event-title { 
+  display: none; 
+}
+
+/* Style for the image within the event tile */
+.event-tile-image {
+  display: block;
+  z-index: 5;
+  width: 100%;
+  height: 100px;        /* Fixed height */
+  object-fit: cover;    /* Ensures full coverage */
+  padding: 0;           /* No padding */
+  margin: 0;            /* No margin */
+  border: none;         /* Remove border if any */
+  box-sizing: border-box; /* Avoid unexpected gaps */
+}
+
+/* Style for the event content div (the hover overlay) */
+.event-tile-content {
+  /* Ensure the content covers the whole tile and is positioned correctly */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 80%;
+  /* Add padding to prevent content from touching the edges */
+  /* Ensure text is readable on top of the background image */
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0,0,0,0.5); /* Add text shadow for readability */
+  /* Initially hide the overlay */
+  opacity: 0;
+  /* Add transition for smooth hover effect */
+  transition: opacity 0.3s ease-in-out;
+  /* Ensure the overlay is on top of the background image */
+  z-index: 10;
+  /* Add a background color to the overlay for better readability */
+  background-color: rgba(0, 0, 0, 0.75); /* 75% black opacity */
+  /* Center the content within the overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* Ensure the overlay is positioned within the relative parent (.fc-event) */
+}
+
+/* Show the overlay on hover */
+.fc-event:hover .event-tile-content {
+  opacity: 1;
+}
