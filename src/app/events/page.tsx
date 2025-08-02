@@ -120,8 +120,9 @@ export default function EventsPage() {
                 >
                     Our Events
                 </h1>
-                <div className="bg-black/40 backdrop-blur-sm border border-white/20 rounded-xl px-6 py-4 max-w-2xl mx-auto">
-                    <p className="text-lg md:text-xl text-purple-200 font-semibold">
+                <div className="bg-black/40 backdrop-blur-sm rounded-xl px-6 py-4 max-w-2xl mx-auto relative">
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-50"></div>
+                    <p className="text-lg md:text-xl text-purple-200 font-semibold relative z-10">
                         Discover past and upcoming workshops, talks, and
                         competitions here.
                     </p>
@@ -147,8 +148,11 @@ export default function EventsPage() {
                                     }
                                 }}
                                 className="bg-gradient-to-br from-purple-900/80 via-purple-800/75 to-pink-900/80 
-                  backdrop-blur-xl shadow-lg border border-purple-700/60 rounded-xl p-4 
-                  cursor-pointer active:scale-95 transform transition-all duration-200"
+                  backdrop-blur-xl shadow-lg rounded-xl p-4 relative
+                  cursor-pointer active:scale-95 transform transition-all duration-200
+                  border border-transparent bg-clip-padding
+                  before:absolute before:inset-0 before:rounded-xl before:bg-gradient-to-r 
+                  before:from-transparent before:via-purple-400/20 before:to-transparent before:-z-10"
                             >
                                 <div className="flex items-start space-x-4">
                                     <div className="flex-shrink-0">
@@ -216,9 +220,11 @@ export default function EventsPage() {
 
                     {/* Calendar container - Desktop only */}
                     <div
-                        className="bg-black mt-12 w-full max-w-7xl p-8 rounded-3xl
+                        className="bg-black mt-12 w-full max-w-7xl p-8 rounded-3xl relative
               bg-gradient-to-br from-purple-900/80 via-purple-800/75 to-pink-900/80
-              backdrop-blur-3xl shadow-2xl border border-purple-700/60"
+              backdrop-blur-3xl shadow-2xl border border-transparent bg-clip-padding
+              before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-r 
+              before:from-transparent before:via-purple-400/25 before:to-transparent before:-z-10"
                         style={{ boxShadow: "0 0 40px rgba(168,85,247,0.6)" }}
                     >
                         <FullCalendar

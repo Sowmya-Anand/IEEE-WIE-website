@@ -46,7 +46,7 @@ export default function ContactPage() {
                             Contact Us
                         </h1>
                         <p className="text-lg md:text-xl text-light-lavender max-w-2xl mx-auto">
-                            Get in touch with IEEE WIE SSN. We'd love to hear
+                            Get in touch with IEEE WIE SSN. We&apos;d love to hear
                             from you!
                         </p>
                     </div>
