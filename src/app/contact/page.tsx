@@ -105,7 +105,7 @@ export default function ContactPage() {
 
                                 <button
                                     type="submit"
-                                    className="w-full px-6 py-3 bg-gradient-to-r from-primary-purple to-accent-pink text-white font-semibold text-lg rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 font-garamond ring-2 ring-purple-500/60 hover:ring-pink-400/80 focus:outline-none focus:ring-4"
+                                    className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 font-garamond ring-2 ring-purple-500/60 hover:ring-pink-400/80 focus:outline-none focus:ring-4"
                                 >
                                     Send Message
                                 </button>
@@ -117,12 +117,12 @@ export default function ContactPage() {
                                 Connect With Us
                             </h2>
 
-                              <a
+                            <a
                                 href="mailto:ssnieeewie@ssn.edu.in"
                                 className="block bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg p-6 hover:bg-white/15 hover:scale-105 transform transition-all duration-300 cursor-pointer"
                             >
                                 <div className="flex items-center space-x-4">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-purple to-accent-pink rounded-full flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
                                         <FaEnvelope className="text-white text-xl" />
                                     </div>
                                     <div>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                                 className="block bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg p-6 hover:bg-white/15 hover:scale-105 transform transition-all duration-300 cursor-pointer"
                             >
                                 <div className="flex items-center space-x-4">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-purple to-accent-pink rounded-full flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
                                         <FaLinkedin className="text-white text-xl" />
                                     </div>
                                     <div>
@@ -164,7 +164,7 @@ export default function ContactPage() {
                                 className="block bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg p-6 hover:bg-white/15 hover:scale-105 transform transition-all duration-300 cursor-pointer"
                             >
                                 <div className="flex items-center space-x-4">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-purple to-accent-pink rounded-full flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
                                         <FaInstagram className="text-white text-xl" />
                                     </div>
                                     <div>
